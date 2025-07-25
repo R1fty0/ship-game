@@ -1,0 +1,7 @@
+res://resources/materials/ocean_mat.tres
+res://scenes/main.tscn
+res://scenes/main.gd
+res://scenes/boats/testing_boat.tscn
+res://scenes/environment/testing_island.tscn
+res://scenes/player/camera_controller.tscn
+res://scenes/player/camera_controller.gd

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bed8y2k20wlny"]
+
+[ext_resource type="Script" uid="uid://dgxqeba34t1l1" path="res://scenes/player/camera_controller.gd" id="1_6b34o"]
+
+[node name="CameraController" type="Node3D"]
+script = ExtResource("1_6b34o")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.128388, 0)
+spring_length = 10.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.542819)

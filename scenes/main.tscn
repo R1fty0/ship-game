@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://bixsit4mogjqj"]
+
+[ext_resource type="Material" uid="uid://ca4w604gsdx5f" path="res://resources/materials/ocean_mat.tres" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://t76s5th5ntun" path="res://scenes/main.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bpgj30qloiw73" path="res://scenes/boats/testing_boat.tscn" id="3_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://bed8y2k20wlny" path="res://scenes/player/camera_controller.tscn" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://bgkf0n8ct20wv" path="res://scenes/environment/testing_island.tscn" id="4_tefeu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_h2yge"]
+sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
+
+[sub_resource type="Environment" id="Environment_1bvp3"]
+background_mode = 2
+sky = SubResource("Sky_h2yge")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lquwl"]
+material = ExtResource("1_ig7tw")
+size = Vector2(1000, 1000)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_jyhfs")
+
+[node name="Lighting" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = SubResource("Environment_1bvp3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="OceanSurface" type="MeshInstance3D" parent="Environment"]
+mesh = SubResource("PlaneMesh_lquwl")
+
+[node name="TestingBoat" parent="." instance=ExtResource("3_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.368017, 0)
+
+[node name="CameraController" parent="TestingBoat" instance=ExtResource("4_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.760547, 0)
+
+[node name="Islands" type="Node" parent="."]
+
+[node name="TestingIsland" parent="Islands" instance=ExtResource("4_tefeu")]
+transform = Transform3D(20, 0, 0, 0, 5, 0, 0, 0, 20, -35.134, 0, 37.185)
+
+[node name="TestingIsland2" parent="Islands" instance=ExtResource("4_tefeu")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 54.866, 0, 37.185)
+
+[node name="TestingIsland3" parent="Islands" instance=ExtResource("4_tefeu")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 32.866, 0, 231.185)

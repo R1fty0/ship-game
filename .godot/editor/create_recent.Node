@@ -1,0 +1,6 @@
+Camera3D
+SpringArm3D
+Node
+CollisionShape3D
+StaticBody3D
+MeshInstance3D

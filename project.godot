@@ -1,0 +1,4 @@
+[application]
+
+config/name="ship-game"
+run/main_scene="res://main.tscn"
